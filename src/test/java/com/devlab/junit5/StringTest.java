@@ -1,6 +1,10 @@
 package com.devlab.junit5;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -59,6 +63,24 @@ class StringTest {
 
         assertThrows(NullPointerException.class,
                 () -> str.length());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"ABCD", "C", "DEF"})
+    void length_greater_than_zero_using_parameterized(String str) {
+        assertThat(str.length()).isGreaterThan(0);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"abcd,ABCD", "def,DEF", "'',''"})
+    void upperCase_parameterized(String word, String capitalizedWord) {
+        assertThat(word.toUpperCase()).isEqualTo(capitalizedWord);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"abcd,4", "def,3", "'',0"})
+    void length_parameterized(String word, int length) {
+        assertThat(word.length()).isEqualTo(length);
     }
 
 }
