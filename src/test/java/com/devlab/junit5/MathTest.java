@@ -20,4 +20,11 @@ class MathTest {
         assertThat(max).isOne();
     }
 
+    @Test
+    void test_conflicts() {
+        int max = Math.min(1,100);
+
+        assertThat(max).isOne();
+    }
+
 }
