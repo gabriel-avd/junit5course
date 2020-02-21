@@ -39,6 +39,7 @@ class StringTest {
         assertThat(length).isEqualTo(4);
     }
 
+    @RepeatedTest(10)
     @Test
     void toUpperCase_basic() {
         String str = "abcd";
@@ -71,13 +72,13 @@ class StringTest {
         assertThat(str.length()).isGreaterThan(0);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} upperCase is {1}")
     @CsvSource(value = {"abcd,ABCD", "def,DEF", "'',''"})
     void upperCase_parameterized(String word, String capitalizedWord) {
         assertThat(word.toUpperCase()).isEqualTo(capitalizedWord);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} length is {1}")
     @CsvSource(value = {"abcd,4", "def,3", "'',0"})
     void length_parameterized(String word, int length) {
         assertThat(word.length()).isEqualTo(length);
