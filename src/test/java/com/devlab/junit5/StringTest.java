@@ -83,4 +83,48 @@ class StringTest {
         assertThat(word.length()).isEqualTo(length);
     }
 
+    @Nested
+    @DisplayName("For Empty Strings")
+    class EmptyStringTests {
+
+        String str;
+
+        @BeforeEach
+        void setup(){
+            str = "";
+        }
+
+        @Test
+        void lengthIsZero() {
+            assertThat(str.length()).isEqualTo(0);
+        }
+
+        @Test
+        void upperCaseIsEmpty(){
+            assertThat(str.toUpperCase()).isEqualTo("");
+        }
+    }
+
+    @Nested
+    @DisplayName("For Large Strings")
+    class LargeStringTests {
+
+        String str;
+
+        @BeforeEach
+        void setup(){
+            str = "";
+        }
+
+        @Test
+        void lengthIsZero() {
+            assertThat(str.length()).isEqualTo(0);
+        }
+
+        @Test
+        void upperCaseIsEmpty(){
+            assertThat(str.toUpperCase()).isEqualTo("");
+        }
+    }
+
 }
