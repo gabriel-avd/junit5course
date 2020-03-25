@@ -1,12 +1,18 @@
 package Entities;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Person {
     private Long id;
     private String name;
     private String lastName;
     private String occupation;
 
-    public Person(Long id, String name, String lastName, String occupation){
+    public Person() {
+    }
+
+    public Person(Long id, String name, String lastName, String occupation) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -47,5 +53,17 @@ public class Person {
     public Person setOccupation(String occupation) {
         this.occupation = occupation;
         return this;
+    }
+
+    Logger logger = LoggerFactory.getLogger(Person.class);
+
+    public void doNothingButLog() {
+        logger.debug("Inside CUT.doNothingButLog");
+    }
+
+    public void doNothingButLogTwo() {
+        logger.info("Start CUT.doNothingBugLogTwo");
+
+        logger.info("End CUT.doNothingBugLogTwo");
     }
 }
